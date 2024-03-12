@@ -5,7 +5,7 @@ def f(S):
     Z=[]; A=[]
 
     for n in range(len(NS)):  #В цикле проставляю одиночным буквам цифру 1
-        if NS[n] not in c and NS[n+1] not in c:
+        if NS[n].isalpha() and NS[n+1].isalpha():
             NS=NS.replace(NS[n],NS[n]+'1',1)
 
     AS=NS[:-2]
