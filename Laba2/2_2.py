@@ -1,19 +1,25 @@
-def serpin_t(n):
-    tr= [['*']]
+def draw_sierpinski_triangle(n):
+    # Функция для отрисовки треугольника Серпинского
+    def draw_triangle(x, y, size):
+        if size == 1:
+            # Базовый случай - рисуем звездочку
+            canvas[y][x] = '*'
+        else:
+            # Рекурсивно рисуем 3 меньших треугольника
+            draw_triangle(x, y, size // 2)
+            draw_triangle(x + size // 2, y, size // 2)
+            draw_triangle(x + size // 4, y + size // 2, size // 2)
 
-    for i in range(n):
-        for j in range(len(tr[i])):
-            tr[i].append(tr[i][j] + tr[i][j])
+    # Создаем пустой холст
+    size = 3 * (2 ** (n - 1))
+    canvas = [[' ' for _ in range(size)] for _ in range(size)]
 
-        row = []
-        for j in range(len(tr[i])):
-            row.append(' ' * (2 ** (n - 1 - i)) + tr[i][j] + ' ' * (2 ** (n - 1 - i)))
-        tr.append(row)
+    # Начинаем отрисовку
+    draw_triangle(0, 0, size)
 
-    for row in tr:
-        print(''.join(row))
+    # Выводим результат
+    for row in canvas:
+        print(' '.join(row))
 
-print("Введите количество: " )
-n = int(input())
-if (n>2):  # количество итераций (минимум 3)
-    serpin_t(n)
+n = 4  # Количество итераций (минимум 3)
+draw_sierpinski_triangle(n)
