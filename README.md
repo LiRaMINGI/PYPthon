@@ -1,2 +1,2 @@
 # PYPthon
-Repository for my Pythob labs
+Repository for my Python labs
